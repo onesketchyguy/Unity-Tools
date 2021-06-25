@@ -2,11 +2,11 @@
 
 using System; // For "Exception"
 using System.IO; // For File and Directory accessors
+using System.Linq; // For "LastOrDefault"
+using UnityEngine; // For JsonUtility
 using System.Collections.Generic; // For "List"
 using System.Runtime.Serialization; // For standard serialization
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Linq; // For "last or default"
-using UnityEngine; // For JsonUtility
 
 namespace FileSystem
 {
@@ -28,7 +28,7 @@ namespace FileSystem
                 return Application.dataPath + "\\user_data";
 #endif
 #if !UNITY_EDITOR
-            return  Application.persistentDataPath + "\\user_data";
+                return Application.persistentDataPath + "\\user_data";
 #endif
             }
         }
@@ -49,11 +49,6 @@ namespace FileSystem
             json,
 
             /// <summary>
-            /// Uses binary serialization on the object.
-            /// </summary>
-            dat,
-
-            /// <summary>
             /// Saves the item as a JSON object.
             /// </summary>
             txt,
@@ -61,7 +56,12 @@ namespace FileSystem
             /// <summary>
             /// Uses binary serialization on the object.
             /// </summary>
-            setting,
+            dat,
+
+            /// <summary>
+            /// Uses binary serialization on the object.
+            /// </summary>
+            config,
 
             // Add extensions here for more file types
         }
